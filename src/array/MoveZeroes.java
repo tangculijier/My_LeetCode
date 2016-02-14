@@ -19,7 +19,8 @@ public class MoveZeroes
 		int array2[] = {0,1,0};
 		int array3[] = {0,0};
 		int array4[] = {0, 1, 0, 3, 12,19};
-		moveZeroes1(array4);
+		int array5[] = {2,1};
+		moveZeroes2(array5);
 		
 
 	}
@@ -42,4 +43,44 @@ public class MoveZeroes
     		
          System.out.println(Arrays.toString(nums));
 	 }
+	 
+	public static void moveZeroes2(int[] nums)
+	{
+		int i = 0;
+		int j = 0;
+		while (i < nums.length)
+		{
+			if(nums[i] != 0)
+			{
+				if(i != j)
+				{
+					nums[j++] = nums[i];
+					nums[i] = 0;
+				}
+				else
+				{
+					j++;//说明num[j] != 0，需要换
+				}
+			
+			}
+			i++;
+		}
+		  System.out.println(Arrays.toString(nums));
+	}
+	public static void moveZeroes3(int[] nums) {  
+        int i=0;  
+        int j=0;  
+        while(j<nums.length) {  
+            if(nums[j]!=0) {  
+               if(j!=i) {   
+                    nums[i++] = nums[j];  
+                    nums[j] = 0;  
+               } else {  
+                   ++i;  
+               }  
+            }   
+            ++j;  
+        }  
+        System.out.println(Arrays.toString(nums));
+    }  
 }
