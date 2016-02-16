@@ -23,11 +23,11 @@ public class Medium_SetMatrixZeroes
 	{
 		
 		//test
-		int array1[][] ={ {1,2,3,4,5},{5,0,0,7,8},{1,1,2,3,4},{5,9,6,7,8}};
+		int array1[][] ={ {1,0,3,4,5},{5,2,0,7,8},{1,1,2,3,4},{5,9,6,7,8}};
 		int array2[][] ={ {0}};
 
 		printArray(array1);
-		setZeroes(array1);
+		setZeroes2(array1);
 		System.out.println("----------");
 		printArray(array1);
 	}
@@ -66,6 +66,72 @@ public class Medium_SetMatrixZeroes
 	           // System.out.println("i = " + point[0] + "  j = " + point[1]);  
 	        }  
 	 }
+	 
+	 public static void setZeroes2(int[][] matrix) 
+	 {
+		 int m = matrix.length;//row
+		 int n = matrix[0].length;//column
+		 boolean firstRowContainsZero = false;
+		 boolean firstColumnContainsZero = false;
+		 for(int i = 0 ;i < n ;i++)
+		 {
+			 if( matrix[0][i] == 0 )
+			 {
+				 firstRowContainsZero  = true;
+				 break;
+			 }
+		 }
+		 for(int j = 0 ;j < m ;j++)
+		 {
+			 if( matrix[j][0] == 0 )
+			 {
+				 firstColumnContainsZero  = true;
+				 break;
+			 }
+		 }
+		 for(int i = 1 ; i< m;i++)
+		 {
+			for(int j = 1 ; j < n;j++)
+			{
+				if(matrix[i][j] == 0)
+				{
+					matrix[0][j] = 0;
+					matrix[i][0] = 0;
+
+				}
+			}
+		 }
+		 
+		 for(int i = 1 ; i< m;i++)
+		 {
+			for(int j = 1 ; j < n;j++)
+			{
+				if(matrix[0][j] == 0 ||matrix[i][0] == 0)
+				{
+					matrix[i][j] = 0;
+
+				}
+			}
+		 }
+		 if(firstColumnContainsZero == true)
+		 {
+			 for(int i = 0 ; i < m;i++)
+			 {
+				 matrix[i][0] = 0;
+			 }
+		 }
+		 
+		 if(firstRowContainsZero)
+		 {  
+            for(int j = 0; j < n; ++j)  
+            {
+            	 matrix[0][j] = 0;  
+            }
+	               
+	      }  
+		 
+	 }
+	 
 	 
 	 private static void printArray(int[][] array1)
 	 {
